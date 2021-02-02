@@ -28,3 +28,8 @@ Verbs:
 - Use
 - Check status
 - Release
+
+## Diagram
+
+
+Person ------> 
