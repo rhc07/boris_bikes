@@ -29,7 +29,12 @@ Verbs:
 - Check status
 - Release
 
-## Diagram
+## Diagram Domain Model
 
 
-Person ------> 
+Person ---------- Bike[check_status]
+   |                |
+   |                |
+   |                |
+DockingStation [release]
+
