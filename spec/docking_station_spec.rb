@@ -1,21 +1,44 @@
-require "DockingStation_class.rb"
+require "DockingStation_class"
+require "Bike"
 
 describe DockingStation do 
-  it "Object responds to relase_bike" do
+  it "Object responds to release_bike" do
   	expect(DockingStation.new).to respond_to(:release_bike)
   end
-  it "Gets a bike" do
-    expect(DockingStation.new.release_bike).to be_a(Bike)
+  describe "#release_bike" do 
+    it "Gets a bike" do
+  	    bike = [Bike.new]
+  	    subject.dock_bike(bike)
+        expect(subject.release_bike).to eq bike
+    end
+    it "raises an error when there are no bikes available." do
+        subject = DockingStation.new
+        expect {subject.release_bike}.to raise_error
+   end
   end
-  it "is working" do
-	expect(DockingStation.new.release_bike.working?).to eq(true)
+  it "Bike is docked" do
+  	expect(DockingStation.new).to respond_to(:dock_bike)
   end
+  describe "#dock_bike" do
+  	# it "docks something" do
+  	#     subject = DockingStation.new
+  	#     bike = Bike.new
+   #      expect(subject.dock_bike(bike)).to eq bike
+    # end
+  	it "raises an error when capacity is full." do
+  		subject = DockingStation.new
+  		20.times { subject.dock_bike Bike.new }
+  		expect {subject.dock_bike Bike.new}.to raise_error 'docking station full'
+  	end
+  end
+  it "Bike that has been docked" do
+  	expect(subject).to respond_to(:dock_bike).with(1).argument
+  end
+  # it "Docking Station has bikes" do
+  # 	expect(subject).to respond_to(:bike)
+  # end
 end
 
-describe Bike do
-  it "Is bike.working?" do
-    expect(Bike.new).to respond_to(:working?)
-  end
-end
 
-
+#I'd like docking stations not to release bikes when there are none available.
+#I'd like docking stations not to release bikes when there are none available.
