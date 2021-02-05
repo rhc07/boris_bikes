@@ -14,22 +14,22 @@ describe DockingStation do
     it "raises an error when there are no bikes available." do
         subject = DockingStation.new
         expect {subject.release_bike}.to raise_error
-   end
+    end
   end
-  it "Bike is docked" do
-  	expect(DockingStation.new).to respond_to(:dock_bike)
-  end
+    it "Bike is docked" do
+  	    expect(DockingStation.new).to respond_to(:dock_bike)
+    end
   describe "#dock_bike" do
-  	# it "docks something" do
-  	#     subject = DockingStation.new
-  	#     bike = Bike.new
-   #      expect(subject.dock_bike(bike)).to eq bike
-    # end
   	it "raises an error when capacity is full." do
   		subject = DockingStation.new
   		20.times { subject.dock_bike Bike.new }
-  		expect {subject.dock_bike Bike.new}.to raise_error 'docking station full'
+  		expect {subject.dock_bike Bike.new }.to raise_error 'docking station full'
   	end
+  	# it "docks something" do
+  	#     subject = DockingStation.new
+  	#     bike = Bike.new
+    #     expect(subject.dock_bike(bike)).to eq bike
+    # end
   end
   it "Bike that has been docked" do
   	expect(subject).to respond_to(:dock_bike).with(1).argument
@@ -39,6 +39,3 @@ describe DockingStation do
   # end
 end
 
-
-#I'd like docking stations not to release bikes when there are none available.
-#I'd like docking stations not to release bikes when there are none available.
